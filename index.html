@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <div class="marquee">
+    <div class="marquee_group">
+        <h4>Business A</h4>
+        <h4>Business B</h4>
+        <h4>Business C</h4>
+        <h4>Business D</h4>
+        <h4>Business E</h4>
+        <h4>Business F</h4>
+        <h4>Business G</h4>
+
+    </div>
+    <div aria-hidden="true" class="marquee_group">
+        <h4>Business A</h4>
+        <h4>Business B</h4>
+        <h4>Business C</h4>
+        <h4>Business D</h4>
+        <h4>Business E</h4>
+        <h4>Business F</h4>
+        <h4>Business G</h4>
+    </div>
+   </div> 
+   </body>
+   <style>
+    *{
+        box-sizing: border-box;
+    }
+    body{
+        --space:3rem;
+        min-height: 100vh;
+        display: grid;
+        align-content: center;
+        overflow: hidden;
+        gap:var(--space);
+        width: 100%;
+        font-size: 1.5rem;
+        line-height: 1.5;
+    }
+    .marquee{
+        --duration: 6s;
+        --gap:var(--space);
+        display: flex;
+        overflow: hidden;
+        user-select: none;
+        gap: var(--gap);
+    }
+    .marquee_group{
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: space-around;
+gap: var(--gap);
+min-width: 100%;
+animation: scroll var(--duration) linear infinite;
+    }
+@media (perfers-reduced-motion:reduce){
+    .marquee_group{
+        animation-play-state:paused;
+    }
+}
+.marquee_group h4{
+    object-fit: cover;
+    border-radius: 1rem;
+    border: 1px solid #ccc;
+   padding: 4rem;
+    text-align: center;
+
+}
+@keyframes scroll {
+   0% {
+    transform: translateX(0);
+   } 
+   100%{
+    transform: translateX(calc(-100% - var(--gap)));
+   }
+}
+@media only screen and(min-width:768px){
+  
+}
+   </style> 
+</html>
